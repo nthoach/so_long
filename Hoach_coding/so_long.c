@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 05:56:29 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/13 09:18:10 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/14 12:21:15 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	msg_err(char *s, int *err)
+{
+	ft_printf("%s\n", s);
+	*err = 1;
+	return (1);
+}
 
 void	free_solong(t_solong *solong, char *s)
 {
@@ -18,25 +25,26 @@ void	free_solong(t_solong *solong, char *s)
 
 	i = 0;
 	ft_printf("%s\n", s);
-	while (solong->map_pp[i])
+	while (solong->map[i])
 	{
-		free(solong->map_pp[i]);
+		free(solong->map[i]);
 		i++;
 	}
-	free(solong->map_pp);
-	exit(1);
+	free(solong->map);
+	exit (1);
 }
+// move: up, left, down, right
 
-int	user_move(int	key, t_solong *solong)
+int	user_move(int key, t_solong *solong)
 {
-	if (key == 13)
-		move_step(solong, 0 , -1); //up
-	else if (key == 0)
-		move_step(solong, -1 , 0); //left
-	else if (key == 1)
-		move_step(solong, 0 , 1); //down
-	else if (key == 2)
-		move_step(solong, 1 , 0); //right
+	if (key == KEY_LEFT || key == KEY_A)
+		move_step(solong, 0, -1);
+	else if (key == KEY_RIGHT || key == KEY_D)
+		move_step(solong, 0, 1);
+	else if (key == KEY_UP || key == KEY_W)
+		move_step(solong, -1, 0);
+	else if (key == KEY_DOWN || key == KEY_S)
+		move_step(solong, 1, 0);
 	else if (key == 53)
 		close_window(solong);
 	return (0);
@@ -52,26 +60,27 @@ int	close_window(t_solong *solong)
 
 int	main(int agc, char **agv)
 {
-	t_solong	*solong;
+	t_solong	solong;
 	int			error;
-	
+
 	error = 0;
-	solong = NULL;
-	ft_memset(solong, 0, sizeof(t_solong));
+	ft_memset(&solong, 0, sizeof(t_solong));
 	if (agc != 2)
 	{
-		ft_printf("Error\nInvalid Arguments\ne.g., ./so_long ./data/maps/map.ber");		
+		msg_err("Invalid Arguments, e.g., ./so_long map.ber", &error);
+		free(&solong);
+		return (-1);
 	}
-	check_map_all(solong, agv[1], &error);
-	solong->mlx = mlx_init();
-	if (!solong->mlx)
+	check_map_all(&solong, agv[1], &error);
+	solong.mlx = mlx_init();
+	if (!solong.mlx)
 		return (0);
-	draw_map(solong);	//malloc inside this for solong->map_pp
-	map_solvable(solong, &error);
+	draw_map(&solong);
+	map_solvable(&solong, &error);
 	if (error)
-		free_solong(solong, "Free and Exit\n");
-	mlx_key_hook(solong->mlx_win, user_move, solong);
-	mlx_hook(solong->mlx_win, 17, 0, close_window, solong);
-	mlx_loop(solong->mlx);
+		free_solong(&solong, "Free and Exit\n");
+	mlx_key_hook(solong.mlx_win, user_move, &solong);
+	mlx_hook(solong.mlx_win, 17, 0, close_window, &solong);
+	mlx_loop(solong.mlx);
 	return (0);
 }

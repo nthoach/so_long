@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 06:56:41 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/13 07:41:27 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/14 11:55:06 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,31 @@ void	place_image(t_solong *solong, char *loc, int i, int j)
 
 	sizei = IMGH;
 	sizej = IMGW;
-	solong->image = mlx_xpm_file_to_image(solong->mlx, loc, &sizei, &sizej);
-	mlx_put_image_to_window(solong->mlx, solong->mlx_win, solong->image, i * sizei, j * sizej);
-	mlx_destroy_image(solong->mlx, solong->image);
+	solong->img = mlx_xpm_file_to_image(solong->mlx, loc, &sizei, &sizej);
+	mlx_put_image_to_window(solong->mlx, solong->mlx_win, solong->img, \
+								j * IMGH, i * IMGW);
+	mlx_destroy_image(solong->mlx, solong->img);
 }
 
 void	put_images(t_solong *solong, int i, int j)
 {
-	if (solong->map_pp[i][j] == '0')
+	if (solong->map[i][j] == '0')
 		place_image(solong, S, i, j);
-	else if (solong->map_pp[i][j] == '1')
+	else if (solong->map[i][j] == '1')
 		place_image(solong, W, i, j);
-	else if (solong->map_pp[i][j] == 'P')
+	else if (solong->map[i][j] == 'P')
 	{
 		solong->i0 = i;
 		solong->j0 = j;
 		place_image(solong, S, i, j);
 		place_image(solong, P, i, j);
 	}
-	else if (solong->map_pp[i][j] == 'C')
+	else if (solong->map[i][j] == 'C')
 	{
 		place_image(solong, S, i, j);
 		place_image(solong, C, i, j);
 	}
-	else if (solong->map_pp[i][j] == 'E')
+	else if (solong->map[i][j] == 'E')
 		place_image(solong, E, i, j);
 }
 
@@ -50,18 +51,18 @@ void	draw_map(t_solong *solong)
 {
 	int	i;
 	int	j;
-		
-	solong->mlx_win = mlx_new_window(solong->mlx, solong->width * IMGW,
-		solong->height * IMGH, "so_long");
+
+	solong->mlx_win = mlx_new_window(solong->mlx, solong->w * IMGW, \
+										solong->h * IMGH, "so_long");
 	i = 0;
-	while (solong->map_pp[i])
+	while (solong->map[i])
 	{
 		j = 0;
-		while (solong->map_pp[i][j])
+		while (solong->map[i][j])
 		{
 			put_images(solong, i, j);
 			j++;
 		}
-		i++;		
+		i++;
 	}
 }
