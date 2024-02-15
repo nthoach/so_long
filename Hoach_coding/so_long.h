@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:02:32 by honguyen          #+#    #+#             */
-/*   Updated: 2024/02/14 12:24:11 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:29:43 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@
 # define KEY_RIGHT	124
 # define KEY_UP	126
 # define KEY_DOWN	125
-
+# define KEY_ESC	53
+# define KEY_Q	12
 
 typedef struct s_solong
 {
@@ -54,7 +55,7 @@ typedef struct s_solong
 int		msg_err(char *s, int *err);
 void	free_solong(t_solong *solong, char *s);
 int		user_move(int key, t_solong *solong);
-int		close_window(t_solong *solong);
+int		close_window(t_solong *solong, char *s);
 
 void	move_step_exit0(t_solong *solong, int i1, int j1);
 void	move_step_exit1(t_solong *solong, int i1, int j1);

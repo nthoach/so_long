@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 05:56:29 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/14 12:43:40 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:35:20 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,18 @@ int	user_move(int key, t_solong *solong)
 		move_step(solong, -1, 0);
 	else if (key == KEY_DOWN || key == KEY_S)
 		move_step(solong, 1, 0);
-	else if (key == 53)
-		close_window(solong);
+	else if (key == KEY_ESC || key == KEY_Q)
+		close_window(solong, "Window Closed.");
 	return (0);
 }
 
-int	close_window(t_solong *solong)
+int	close_window(t_solong *solong, char *s)
 {
+	if (*s == 'c')
+		s = "Window Closed.";
 	mlx_clear_window(solong->mlx, solong->mlx_win);
 	mlx_destroy_window(solong->mlx, solong->mlx_win);
-	free_solong(solong, "!!!Congrats!!!You Win!!!");
+	free_solong(solong, s);
 	exit(0);
 }
 
