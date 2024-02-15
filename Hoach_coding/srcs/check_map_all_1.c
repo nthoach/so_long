@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 09:26:03 by honguyen          #+#    #+#             */
-/*   Updated: 2024/02/15 09:11:44 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:12:05 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	check_no_element(t_solong *solong, int *err)
 {
 	if (count_element(solong, 'P') != 1)
 		msg_err("Error\nOnly One Player Needed", err);
-	if (count_element(solong, 'E') < 1)
-		msg_err("Error\nAt Least One Exit Needed", err);
+	if (count_element(solong, 'E') != 1)
+		msg_err("Error\nOnly One Exit Needed", err);
 	solong->no_aw = count_element(solong, 'C');
 	if (solong->no_aw < 1)
 		msg_err("Error\nAt Least One Coin Needed", err);
@@ -69,14 +69,21 @@ void	check_type_element(t_solong *solong, int *err)
 void	check_map_all(t_solong *solong, char *ber, int *err)
 {
 	check_ber(ber, err);
+	if (*err)
+		return ;
 	write_map(solong, ber, err);
+	if (*err)
+		return ;
 	check_rect(solong, err);
+	if (*err)
+		return ;
 	check_wall(solong, err);
+	if (*err)
+		return ;
 	check_no_element(solong, err);
+	if (*err)
+		return ;
 	check_type_element(solong, err);
 	if (*err)
-	{
-		free_solong(solong, "Deleting solong & Exit");
-		exit (1);
-	}
+		return ;
 }

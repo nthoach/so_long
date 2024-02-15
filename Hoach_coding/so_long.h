@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:02:32 by honguyen          #+#    #+#             */
-/*   Updated: 2024/02/15 10:29:43 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:20:28 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@
 # include "libs/libft/libft.h"
 # include "libs/mlx/mlx.h"
 
-# define S	"data/xpm/S.xpm"
-# define W	"data/xpm/W.xpm"
-# define P	"data/xpm/P.xpm"
-# define C	"data/xpm/C.xpm"
-# define E	"data/xpm/E.xpm"
-# define IMGW	100
-# define IMGH	100
-# define KEY_A	0
-# define KEY_D	2
-# define KEY_W	13
-# define KEY_S	1	
+# define S	"data/xpm/S100.xpm"
+# define W	"data/xpm/W100.xpm"
+# define P	"data/xpm/P100.xpm"
+# define C	"data/xpm/C100.xpm"
+# define E	"data/xpm/E100.xpm"
+# define IMGW		100
+# define IMGH		100
+# define KEY_A		0
+# define KEY_D		2
+# define KEY_W		13
+# define KEY_S		1	
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
-# define KEY_UP	126
+# define KEY_UP		126
 # define KEY_DOWN	125
 # define KEY_ESC	53
-# define KEY_Q	12
+# define KEY_Q		12
 
 typedef struct s_solong
 {

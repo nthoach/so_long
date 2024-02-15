@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 05:56:29 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/15 10:35:20 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:08:32 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int	main(int agc, char **agv)
 	if (agc != 2)
 	{
 		msg_err("Invalid Arguments, e.g., ./so_long map.ber", &error);
-		free(&solong);
 		return (-1);
 	}
 	check_map_all(&solong, agv[1], &error);

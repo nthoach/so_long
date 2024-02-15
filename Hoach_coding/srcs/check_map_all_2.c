@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 14:55:16 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/15 09:37:02 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:07:28 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*join_oneline(int fd, int *err)
 	oneline = "";
 	line = get_next_line(fd);
 	if (!line || line[0] == '\n' || line[0] == '\0')
-		msg_err("Invalid Map\n", err);
+		msg_err("Error(1)\n Invalid Map\n", err);
 	while (line)
 	{
 		if (line[0] == '\n')
@@ -52,7 +52,8 @@ void	write_map(t_solong *solong, char *ber, int *err)
 	oneline = join_oneline(fd, err);
 	close(fd);
 	solong->map = ft_split(oneline, '\n');
-	free(oneline);
+	if (!oneline)
+		free(oneline);
 }
 
 void	check_rect(t_solong *solong, int *err)
