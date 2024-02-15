@@ -6,7 +6,7 @@
 #    By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/10 12:42:36 by honguyen          #+#    #+#              #
-#    Updated: 2024/02/14 10:04:40 by honguyen         ###   ########.fr        #
+#    Updated: 2024/02/15 08:47:25 by honguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,10 @@ HEADERS = ./so_long.h
 INCLUDE = -framework OpenGL -framework AppKit -L$(MLX_DIR) -lmlx
 LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 
-MAP = check_map_all_1.c check_map_all_2.c draw_map.c map_solvable.c
-SRC_MAP = $(addprefix src_map/, $(MAP))
+CFILES = check_map_all_1.c check_map_all_2.c draw_map.c map_solvable.c put_images_move.c user_move.c
+SRCS = $(addprefix src/, $(CFILES))
 
-MOV = put_images_move.c user_move.c
-SRC_MOV = $(addprefix src_mov/, $(MOV))
-
-SRC = $(SRC_MAP) $(SRC_MOV) so_long.c
+SRC = $(SRCS) so_long.c
 
 OBJ = $(SRC:.c=.o)
 
