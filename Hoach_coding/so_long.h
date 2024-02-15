@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:02:32 by honguyen          #+#    #+#             */
-/*   Updated: 2024/02/15 11:20:28 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/15 12:46:30 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 # define P	"data/xpm/P100.xpm"
 # define C	"data/xpm/C100.xpm"
 # define E	"data/xpm/E100.xpm"
+
+# ifndef BONUS
+#  define BONUS	0
+# endif
+
+# define ORANGE 0xFE6500
+# define WHITE	0xFFFFFF
 # define IMGW		100
 # define IMGH		100
 # define KEY_A		0
@@ -49,6 +56,7 @@ typedef struct s_solong
 	char	map_h[256][256];
 	void	*mlx;
 	void	*mlx_win;
+	void	*mlx_text;
 	void	*img;
 }	t_solong;
 

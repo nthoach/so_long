@@ -6,11 +6,12 @@
 #    By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/10 12:42:36 by honguyen          #+#    #+#              #
-#    Updated: 2024/02/15 10:34:54 by honguyen         ###   ########.fr        #
+#    Updated: 2024/02/15 12:11:52 by honguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
+NAME_BONUS = so_long_bonus
 CC = cc
 FLAGS = -Wall -Wextra -Werror -g3
 
@@ -33,11 +34,13 @@ OBJ = $(SRC:.c=.o)
 
 $(NAME): $(OBJ)
 	make -C $(LIBFT_DIR)
-	$(CC) $(FLAGS) $(INCLUDE) $(OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(FLAGS) $(INCLUDE) $(OBJ) $(LIBFT) -o $(NAME) -D BONUS=0
 
 all: $(NAME)
 
-bonus: all
+bonus: $(OBJ)
+	make -C $(LIBFT_DIR)
+	$(CC) $(FLAGS) $(INCLUDE) $(OBJ) $(LIBFT) -o $(NAME_BONUS) -D BONUS=1
 
 play: all
 	./$(NAME) map.ber
