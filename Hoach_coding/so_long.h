@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:02:32 by honguyen          #+#    #+#             */
-/*   Updated: 2024/02/16 09:29:20 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:36:43 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,12 @@
 
 # define S	"data/xpm/S100.xpm"
 # define W	"data/xpm/W100.xpm"
+# define W0	"data/xpm/W0100.xpm"
 # define P	"data/xpm/P100.xpm"
+# define P_F	"data/xpm/P_F100.xpm"
+# define P_B	"data/xpm/P_B100.xpm"
+# define P_R	"data/xpm/P_R100.xpm"
+# define P_L	"data/xpm/P_L100.xpm"
 # define C	"data/xpm/C100.xpm"
 # define E	"data/xpm/E100.xpm"
 

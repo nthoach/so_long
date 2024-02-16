@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 06:56:41 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/15 12:55:47 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:35:33 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	put_images(t_solong *solong, int i, int j)
 		solong->i0 = i;
 		solong->j0 = j;
 		place_image(solong, S, i, j);
-		place_image(solong, P, i, j);
+		place_image(solong, P_F, i, j);
 	}
 	else if (solong->map[i][j] == 'C')
 	{

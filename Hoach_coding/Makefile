@@ -6,7 +6,7 @@
 #    By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/10 12:42:36 by honguyen          #+#    #+#              #
-#    Updated: 2024/02/16 07:39:22 by honguyen         ###   ########.fr        #
+#    Updated: 2024/02/16 11:58:46 by honguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,13 @@ LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 
 CFILES = check_map_all_1.c check_map_all_2.c draw_map.c map_solvable.c put_images_move.c user_move.c
 SRCS = $(addprefix srcs/, $(CFILES))
+SRCS_BONUS = $(addprefix srcs_bonus/, $(CFILES))
 
 SRC = $(SRCS) so_long.c
+SRC_BONUS = $(SRCS_BONUS) so_long.c
 
 OBJ = $(SRC:.c=.o)
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 %.o: %.c $(HEADERS)
 	$(CC) $(FLAGS) -I$(MLX_DIR) -c $< -o $@
@@ -38,9 +41,9 @@ $(NAME): $(OBJ)
 
 all: $(NAME)
 
-bonus: $(OBJ)
+bonus: $(OBJ_BONUS)
 	make -C $(LIBFT_DIR)
-	$(CC) $(FLAGS) $(INCLUDE) $(OBJ) $(LIBFT) -o $(NAME_BONUS) -D BONUS=1
+	$(CC) $(FLAGS) $(INCLUDE) $(OBJ_BONUS) $(LIBFT) -o $(NAME_BONUS) -D BONUS=1
 
 play: all
 	./$(NAME) map.ber

@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 07:11:49 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/15 12:55:22 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:50:29 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,6 @@ void	move_step(t_solong *solong, int i, int j)
 	else
 		move_step_exit1(solong, i1, j1);
 	put_images_move(solong, i1, j1);
-	//
-	mlx_string_put(solong->mlx, solong->mlx_win, 50, 50, WHITE, steps);
 	ft_printf("%s\n", steps);
 	free(steps);
-	//
 }
