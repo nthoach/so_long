@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 05:40:11 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/14 12:37:29 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/16 09:32:17 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,8 @@ void	map_solvable(t_solong *solong, int *err)
 	j = solong->j0;
 	scan_map(solong, i, j);
 	if (solong->ct_exit < 1 || solong->ct_aw != solong->no_aw)
-		msg_err("Error\n Unsolvable Map", err);
-	if (*err)
 	{
-		free_solong(solong, "Deleting solong - Exit");
-		exit (1);
+		free_solong(solong);
+		msg_err("Unsolvable Map\n", err);
 	}
 }

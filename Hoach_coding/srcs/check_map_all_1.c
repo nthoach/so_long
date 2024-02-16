@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 09:26:03 by honguyen          #+#    #+#             */
-/*   Updated: 2024/02/15 11:12:05 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/16 09:40:57 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,21 @@ int	count_element(t_solong *solong, char c)
 void	check_no_element(t_solong *solong, int *err)
 {
 	if (count_element(solong, 'P') != 1)
-		msg_err("Error\nOnly One Player Needed", err);
+	{
+		free_solong(solong);
+		msg_err("Only One Player Needed\n", err);
+	}
 	if (count_element(solong, 'E') != 1)
-		msg_err("Error\nOnly One Exit Needed", err);
+	{
+		free_solong(solong);
+		msg_err("Only One Exit Needed\n", err);
+	}
 	solong->no_aw = count_element(solong, 'C');
 	if (solong->no_aw < 1)
-		msg_err("Error\nAt Least One Coin Needed", err);
+	{
+		free_solong(solong);
+		msg_err("At Least One Coin Needed", err);
+	}
 }
 
 void	check_type_element(t_solong *solong, int *err)
@@ -59,7 +68,10 @@ void	check_type_element(t_solong *solong, int *err)
 		{
 			c = solong->map[i][j];
 			if (c != 'P' && c != 'C' && c != 'E' && c != '0' && c != '1')
-				msg_err("Error\nInvalid Symbol on Map", err);
+			{
+				free_solong(solong);
+				msg_err("Invalid Symbol on Map\n", err);
+			}
 			j++;
 		}
 		i++;
@@ -69,21 +81,9 @@ void	check_type_element(t_solong *solong, int *err)
 void	check_map_all(t_solong *solong, char *ber, int *err)
 {
 	check_ber(ber, err);
-	if (*err)
-		return ;
 	write_map(solong, ber, err);
-	if (*err)
-		return ;
 	check_rect(solong, err);
-	if (*err)
-		return ;
 	check_wall(solong, err);
-	if (*err)
-		return ;
 	check_no_element(solong, err);
-	if (*err)
-		return ;
 	check_type_element(solong, err);
-	if (*err)
-		return ;
 }

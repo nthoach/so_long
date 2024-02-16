@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:02:32 by honguyen          #+#    #+#             */
-/*   Updated: 2024/02/15 12:46:30 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/16 09:29:20 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef struct s_solong
 	void	*img;
 }	t_solong;
 
-int		msg_err(char *s, int *err);
-void	free_solong(t_solong *solong, char *s);
+void	msg_err(char *s, int *err);
+void	free_solong(t_solong *solong);
 int		user_move(int key, t_solong *solong);
 int		close_window(t_solong *solong, char *s);
 
