@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 14:02:32 by honguyen          #+#    #+#             */
-/*   Updated: 2024/02/17 12:27:18 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/17 13:25:33 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 # define C	"data/xpm/C100.xpm"
 # define E	"data/xpm/E100.xpm"
 # define G "data/xpm/G.xpm"
+
+# ifndef LEVEL
+#  define LEVEL 3
+# endif
 
 # define ORANGE 0xFE6500
 # define WHITE	0xFFFFFF

@@ -6,7 +6,7 @@
 #    By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/10 12:42:36 by honguyen          #+#    #+#              #
-#    Updated: 2024/02/17 11:18:00 by honguyen         ###   ########.fr        #
+#    Updated: 2024/02/17 13:24:16 by honguyen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,15 @@ play: all
 
 playbonus: bonus
 	./$(NAME_BONUS) map.ber
+
+test:
+	@make $(NAME)
+	@./$(NAME) map.ber
+
+leaks:
+	@make $(NAME)
+	@valgrind -s --leak-check=full --show-leak-kinds=all ./$(NAME) map.ber
+
 	
 clean:
 	rm -rf $(OBJ) $(OBJ_BONUS)

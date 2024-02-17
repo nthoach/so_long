@@ -6,7 +6,7 @@
 /*   By: honguyen <honguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 07:11:49 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/17 12:13:56 by honguyen         ###   ########.fr       */
+/*   Updated: 2024/02/17 13:22:49 by honguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ void	put_image_case23(t_solong *solong, int i1, int j1)
 
 void	put_enemy2(t_solong	*solong, int ri, int rj)
 {
+	solong->map[ri][rj] = 'G';
+	place_image(solong, S, ri, rj);
+	place_image(solong, G, ri, rj);
 	solong->map[solong->ri0][solong->rj0] = 'C';
 	place_image(solong, S, solong->ri0, solong->rj0);
 	place_image(solong, C, solong->ri0, solong->rj0);
 	solong->no_aw++;
 	if (solong->map[ri][rj] == 'C')
 		solong->no_aw--;
-	solong->map[ri][rj] = 'G';
-	place_image(solong, S, ri, rj);
-	place_image(solong, G, ri, rj);
 	solong->ri0 = ri;
 	solong->rj0 = rj;
 }
@@ -76,7 +76,7 @@ void	put_image_enemy(t_solong *solong, int i1, int j1)
 		solong->rj0 = rj;
 	}
 	else if ((solong->map[ri][rj] == '0' || solong->map[ri][rj] \
-		== 'C') && d <= 1)
+		== 'C') && d < LEVEL)
 		put_enemy2(solong, ri, rj);
 }
 
